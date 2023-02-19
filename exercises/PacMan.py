@@ -16,7 +16,7 @@ def countMaxMeelConsume(road):
             mealInsuredConsume = 0
         elif (letter == 'o'):
             mealInsuredConsume += 1
-    maxInsuredConsume = max(maxInsuredConsume, mealInsuredConsume) 
+    maxInsuredConsume = max(maxInsuredConsume, mealInsuredConsume)
     return maxInsuredConsume
 
 
