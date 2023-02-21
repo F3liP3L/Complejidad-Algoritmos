@@ -19,15 +19,33 @@ def countMaxMeelConsume(road):
     maxInsuredConsume = max(maxInsuredConsume, mealInsuredConsume)
     return maxInsuredConsume
 
+def validateRoad(road, roadValid):
+    '''
+    Permite validar si el camino que estoy ingresando es valido
+    :param road str:
+    :param roadValid array:
+    :return: boolean
+    '''
+    isValidate = True
+    for letter in road:
+        if letter not in roadValid:
+            isValidate = False
+    return isValidate
+
 
 pacmanRoadReverse = ""
+pacmanRoad = ""
 pacmanRoadTotal = ""
 try:
     boardLength = int(input('Elige el tamaño del recorrido horizontal: '))
     for i in range(boardLength):
-        pacmanRoad = input()[0:boardLength] #Se toma solo la cantidad de letras requeridas.
-        if(i % 2 != 0):
-            pacmanRoad = pacmanRoad[::-1] #Se invierte la cadena.
+        dataCorrect = False
+        while not dataCorrect:
+            pacmanRoad = input() # Se toma solo la cantidad de letras requeridas.
+            if(validateRoad(pacmanRoad,['.','A','o']) and len(pacmanRoad)==boardLength):
+                dataCorrect = True
+        if (i % 2 != 0):
+            pacmanRoad = pacmanRoad[::-1]  # Se invierte la cadena.
         pacmanRoadTotal += pacmanRoad
 except Exception:
     print("An unexpected error!!")
