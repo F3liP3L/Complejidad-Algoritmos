@@ -20,7 +20,6 @@ def rotateMatrizNinetyDegrees(matrix):
             matrix[i][j], matrix[i][n - j - 1] = matrix[i][n - j - 1], matrix[i][j]
     return matrix
 
-
 print("90 grados \n", rotateMatrizNinetyDegrees(matriz))  # 90
 print("180 grados \n", rotateMatrizNinetyDegrees(matriz))  # 180
 print("270 grados \n", rotateMatrizNinetyDegrees(matriz))  # 270
