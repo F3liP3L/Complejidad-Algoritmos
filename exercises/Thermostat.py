@@ -39,7 +39,7 @@ def resolve(l,r,x,a,b):
     return num
 
 
-testCase = int(input("Ingresa la cantidad de casos de prueba: "))
+testCase = int(input())
 for i in range(testCase):
     l = int(input())
     r = int(input())
