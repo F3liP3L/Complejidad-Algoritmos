@@ -40,10 +40,13 @@ def resolve(l, r, x, a, b):
     return num
 
 
-testCase = int(input())
-while not (0 < testCase <= 10 ** 4):
+try:
     testCase = int(input())
+    if 0 < testCase <= 10**6:
+        for i in range(testCase):
+            l, r, x = map(int, input().split())
+            a, b = map(int, input().split())
+            print(resolve(l, r, x, a, b))
+except EOFError:
+    print("An unexpected error!!")
 
-for i in range(testCase):
-    l, r, x, a, b = map(int, input().split())
-    print('{} \n'.format(resolve(l, r, x, a, b)))
