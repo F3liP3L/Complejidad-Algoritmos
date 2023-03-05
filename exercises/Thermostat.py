@@ -1,22 +1,23 @@
+def isAbsolutValueValidate(x, a, b):
+    """
+    Verifica que el valor absoluto de dos numeros es mayor o igual a un numero determinado.
 
-def isValidData(x, a, b):
-    '''
-      Realiza la validacion correspondiente al valor absoluto.
+    :param x: int
+    :param a: int
+    :param b: int
+    :return: boolean
 
-      Args:
-          str x, a, b
-      Returns:
-          boolean
+    Example:
+        >>> isAbsolutValueValidate(5, 8,10)
+    False
 
-      Example:
-          >>> isValidData(5, 8,10)
-          False
-      '''
-    return abs(a-b)>=x
+    """
+    return abs(a - b) >= x
 
-def resolve(l,r,x,a,b):
-    '''
-    Realiza las respectivas validaciones para retornar la temperatura correcta.
+
+def resolve(l, r, x, a, b):
+    """
+    Realiza las respectivas validaciones para devolver el numero de operaciones.
 
     :param l: int
     :param r: int
@@ -25,16 +26,15 @@ def resolve(l,r,x,a,b):
     :param b: int
     :return: int
 
-    '''
+    """
     num = -1
-    if(a == b):
+    if a == b:
         num = 0
-    elif(isValidData(x,a,b)):
+    elif isAbsolutValueValidate(x, a, b):
         num = 1
-    elif(isValidData(x,a,l) and isValidData(x,b,l) and isValidData(x,b,r)):
+    elif isAbsolutValueValidate(x, r, b) or isAbsolutValueValidate(x, a, l):
         num = 2
-    elif(isValidData(x,a,l) and isValidData(x,l,r) and isValidData(x,b,r) or
-         isValidData(x,a,r) and isValidData(x,l,r) and isValidData(x,b,l)):
+    elif isAbsolutValueValidate(x, r, a) and isAbsolutValueValidate(x, l, b):
         num = 3
     return num
 
@@ -48,7 +48,6 @@ for i in range(testCase):
     b = int(input())
     print(resolve(l, r, x, a, b))
 
-
-
-
-
+isAbsolutValueValidateDocumentacion = isAbsolutValueValidate.__doc__
+resolveDocumentacion = resolve.__doc__
+print(isAbsolutValueValidateDocumentacion, "\n", )
