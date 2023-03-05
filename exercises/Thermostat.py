@@ -8,7 +8,7 @@ def isAbsolutValueValidate(x, a, b):
     :return: boolean
 
     Example:
-        >>> isAbsolutValueValidate(5, 8,10)
+        >>> isAbsolutValueValidate(5,8,10)
     False
 
     """
@@ -32,22 +32,18 @@ def resolve(l, r, x, a, b):
         num = 0
     elif isAbsolutValueValidate(x, a, b):
         num = 1
-    elif isAbsolutValueValidate(x, r, b) or isAbsolutValueValidate(x, a, l):
+    elif isAbsolutValueValidate(x, r, max(a, b)) or isAbsolutValueValidate(x, min(a, b), l):
         num = 2
-    elif isAbsolutValueValidate(x, r, a) and isAbsolutValueValidate(x, l, b):
+    elif (isAbsolutValueValidate(x, r, a) and isAbsolutValueValidate(x, b, l)) or (
+            isAbsolutValueValidate(x, a, l) and isAbsolutValueValidate(x, r, b)):
         num = 3
     return num
 
 
 testCase = int(input())
-for i in range(testCase):
-    l = int(input())
-    r = int(input())
-    x = int(input())
-    a = int(input())
-    b = int(input())
-    print(resolve(l, r, x, a, b))
+while not (0 < testCase <= 10 ** 4):
+    testCase = int(input())
 
-isAbsolutValueValidateDocumentacion = isAbsolutValueValidate.__doc__
-resolveDocumentacion = resolve.__doc__
-print(isAbsolutValueValidateDocumentacion, "\n", )
+for i in range(testCase):
+    l, r, x, a, b = map(int, input().split())
+    print('{} \n'.format(resolve(l, r, x, a, b)))
