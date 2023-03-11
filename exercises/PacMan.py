@@ -1,13 +1,13 @@
 # Ejercicio 2451 de Beecrowd PacMan
 
 def countMaxMeelConsume(road):
-    '''
+    """
     Permite contar la mayor cantidad de comida consumida en el recorrido.
     Args:
         str road
     Returns:
         int
-    '''
+    """
     maxInsuredConsume = 0
     mealInsuredConsume = 0
     for letter in road:

@@ -10,7 +10,14 @@ for i in range(numMatriz):
         matriz[i].append(random.randint(0, 100))
 print(matriz)
 
+
 def rotateMatrizNinetyDegrees(matrix):
+    """
+    Permite rotar 90° grados una matriz.
+
+    :param matrix:
+
+    """
     n = len(matrix)
     for i in range(n):  # Tranponemos la matriz usando una tupla
         for j in range(i, n):
@@ -20,7 +27,8 @@ def rotateMatrizNinetyDegrees(matrix):
             matrix[i][j], matrix[i][n - j - 1] = matrix[i][n - j - 1], matrix[i][j]
     return matrix
 
-print("90 grados \n", rotateMatrizNinetyDegrees(matriz))  # 90
-print("180 grados \n", rotateMatrizNinetyDegrees(matriz))  # 180
-print("270 grados \n", rotateMatrizNinetyDegrees(matriz))  # 270
-print("360 grados \n", rotateMatrizNinetyDegrees(matriz))  # 360
+
+print("90° grados \n", rotateMatrizNinetyDegrees(matriz))  # 90
+print("180° grados \n", rotateMatrizNinetyDegrees(matriz))  # 180
+print("270° grados \n", rotateMatrizNinetyDegrees(matriz))  # 270
+print("360° grados \n", rotateMatrizNinetyDegrees(matriz))  # 360
