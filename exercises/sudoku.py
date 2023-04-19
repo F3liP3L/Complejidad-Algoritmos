@@ -1,5 +1,6 @@
 import random
 
+
 def generarSudoku():
     """
     Metodo que genera un tablero de Sudoku válido y completo.
@@ -12,7 +13,8 @@ def generarSudoku():
         rellenarCuadrante(tablero, i, i)
 
     # Resolver el tablero vacío
-    resolverSudoku(tablero)
+    if not resolverSudoku(tablero):
+        print('No se encontro solucion para el Sudoku generado')
 
     # Quitar algunos números del tablero para obtener un Sudoku parcialmente lleno
     eliminarNumeros(tablero)
@@ -23,6 +25,7 @@ def generarSudoku():
 def rellenarCuadrante(tablero, fila, columna):
     """
     Metodo que se encarga de llenar un cuadrante de 3x3 del tablero con números aleatorios que cumplan las reglas del Sudoku.
+    Args: tablero matriz, fila int, columna int
     """
     numeros = list(range(1, 10))
     random.shuffle(numeros)  # Ordena la lista de forma aleatoria
@@ -55,6 +58,8 @@ def resolverSudoku(tablero):
 def encontrarCeldaVacia(tablero):
     """
     Encuentra una celda vacía en el tablero de Sudoku.
+    Args: Matriz
+    Return Tupla (array)
     """
     for i in range(9):
         for j in range(9):
@@ -65,15 +70,18 @@ def encontrarCeldaVacia(tablero):
 
 def esValido(tablero, fila, columna, num):
     """
-    Comprueba si un número es válido para una celda dada en el tablero de Sudoku.
+    Metodo que comprueba si un número es válido para una celda dada en el tablero de Sudoku.
+    Args: tablero Matriz, fila int, columna int, num int
+    Return: Boolean
     """
+    siEsValido = False
     # Comprobar en la misma fila
     if num in tablero[fila]:
-        return False
+        return siEsValido
 
     # Comprobar en la misma columna
     if num in [tablero[i][columna] for i in range(9)]:
-        return False
+        return siEsValido
 
     # Comprobar en el mismo cuadrante de 3x3
     cuadranteFila = fila // 3 * 3
@@ -81,13 +89,15 @@ def esValido(tablero, fila, columna, num):
     for i in range(3):
         for j in range(3):
             if tablero[cuadranteFila + i][cuadranteColumna + j] == num:
-                return False
+                return siEsValido
+    siEsValido = True
+    return siEsValido  # El número es válido
 
-    return True  # El número es válido
 
 def eliminarNumeros(tablero):
     """
     Metodo que elimina números del tablero para obtener un Sudoku parcialmente lleno.
+    Args: Matriz
     """
     numAquitar = 45  # Número de celdas a quitar.
     while numAquitar > 0:
@@ -97,8 +107,9 @@ def eliminarNumeros(tablero):
             tablero[fila][columna] = 0
             numAquitar -= 1
 
+
 sudoku = generarSudoku()
-print(sudoku)
-print("\t\n Sudoku: \n")
+print("\t\n Sudoku sin resolver: ", sudoku)
+print("\t\n Solución Sudoku: \n")
 resolverSudoku(sudoku)
 print(sudoku)
